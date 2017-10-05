@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace HelperFunctions
 {
-    class NetworkDriveMap
+    public class NetworkDriveMap
     {
 
         //Source: http://www.blackwasp.co.uk/mapdriveletter.aspx

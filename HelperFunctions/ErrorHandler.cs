@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace HelperFunctions
 {
-    class ErrorHandler
+    public class ErrorHandler
     {
         public string ErrorHandlerByNumber(int pErrorNumber)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HelperFunctions
 {
-    class Program
+    public class Program
     {
 
         static void TesztNetworkDriveMap()
