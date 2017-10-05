@@ -61,10 +61,9 @@ namespace HelperFunctions
 
       
 
-        public string MapNetworkDrive(string pDriveLetter, string pRemoteName, string pUserName, string pPassword)
+        public uint MapNetworkDrive(string pDriveLetter, string pRemoteName, string pUserName, string pPassword)
         {
-            //Error handler
-            ErrorHandler ErrorHND = new ErrorHandler();
+            //Error handler            
             //example: result = WNetAddConnection2(ref lpNetResource, lpPassword, lpUserName, dwFlags);
             NETRESOURCE networkResource = new NETRESOURCE();
             networkResource.dwType = RESOURCETYPE_DISK;
@@ -73,19 +72,20 @@ namespace HelperFunctions
             networkResource.lpProvider = null;
             uint flags = CONNECT_CMD_SAVECRED | CONNECT_UPDATE_PROFILE;
 
-            Console.WriteLine("Parameters: " + pDriveLetter + ", " + pRemoteName + ", " + pUserName + ", " + pPassword);
+            //DEBUG
+            //Console.WriteLine("Parameters: " + pDriveLetter + ", " + pRemoteName + ", " + pUserName + ", " + pPassword);
 
-            uint result = WNetAddConnection2(ref networkResource, pPassword, pUserName, flags);           
+            uint result = WNetAddConnection2(ref networkResource, pPassword, pUserName, flags);
 
-            return ErrorHND.ErrorHandlerByNumber( int.Parse( result.ToString() ) ) + ". Error Number: " + result.ToString();           
+            return result;
         }
 
-        public string DisconnectNetworkDrive(string pDriveLetter)
+        public uint DisconnectNetworkDrive(string pDriveLetter)
         {
             //Error handler
             ErrorHandler ErrorHND = new ErrorHandler();
             uint result = WNetCancelConnection2(pDriveLetter, CONNECT_UPDATE_PROFILE, false);
-            return ErrorHND.ErrorHandlerByNumber(int.Parse(result.ToString()));
+            return result;
 
         }
 
