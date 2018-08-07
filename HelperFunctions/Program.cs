@@ -11,11 +11,11 @@ namespace HelperFunctions
 
         static void TesztNetworkDriveMap()
         {
-            NetworkDriveMap networdrivehandler = new NetworkDriveMap();
+            NetworkDriveMap networkdrivehandler = new NetworkDriveMap();
 
             ErrorHandler ErrorHND = new ErrorHandler();            
             Console.WriteLine("Try to map K: drive.");
-            uint connectResult = networdrivehandler.MapNetworkDrive("K:", "\\\\192.168.204.37\\trint", "delog\\backupuser", "8761234502.nagy-obb");
+            uint connectResult = networkdrivehandler.MapNetworkDrive("K:", "\\\\192.168.204.37\\trint", "delog\\backupuser", "8761234502.nagy-obb");
             if (connectResult > 0)
             {
                 Console.WriteLine(ErrorHND.ErrorHandlerByNumber(int.Parse(connectResult.ToString())) + ". Error Number: " + connectResult.ToString());
@@ -26,7 +26,7 @@ namespace HelperFunctions
             }
             Console.WriteLine();
             Console.WriteLine("Meghajtó lecsatolása.");
-            uint disconnectResult = networdrivehandler.DisconnectNetworkDrive("K:");
+            uint disconnectResult = networkdrivehandler.DisconnectNetworkDrive("K:");
 
             if (disconnectResult > 0)
             {
